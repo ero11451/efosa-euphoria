@@ -1,0 +1,31 @@
+<div
+  class="modal fade show"
+  id="session-timeout-dialog"
+  aria-modal="true"
+  role="dialog"
+  style="display: block"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Session Timeout Notification</h4>
+      </div>
+      <div class="modal-body">
+        <p>Your session is about to expire.</p>
+        <p>
+          Redirecting in
+          <span class="countdown-holder">{{ countDown }}</span> seconds.
+        </p>
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped countdown-bar active"
+            role="progressbar"
+            style="min-width: 15px; width: {{ percentCountDown }}%"
+          >
+            <span class="countdown-holder">{{ countDown }}s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

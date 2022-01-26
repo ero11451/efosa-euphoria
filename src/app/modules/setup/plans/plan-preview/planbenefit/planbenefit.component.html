@@ -1,0 +1,31 @@
+
+  <table class="fixed-header">
+    <thead >
+      <tr>
+        <th style="width: 300px;"><span>Benefit Name</span></th>
+        <th style="width: 250px;"><span>Benefit Category</span></th>
+        <th><span>Limit Types</span></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of benefits ;let i = index">
+      <tr *ngFor="let benefitData of data.benefits; let x = index">
+        <td><small>{{benefitData.benefitName}}</small></td>
+        <td><small>{{data.benefitCategoryName}}</small></td>
+        <td>
+          <div style="display: inline; " *ngFor="let limit of benefitData.limit; let i=index">
+              <small *ngIf="limit.limitType !== 'List of services' && limit.limit">  {{limit.limitType}} {{limit.limit}}</small>
+              <small  *ngIf="limit.limitType === 'List of services'">
+                <small type="button" class="" 
+                popover="{{limit.services}}"
+                popoverTitle=" "
+                placement="bottom">
+                <small class="text-primary"> {{limit.limitType}} {{limit.limit}}</small>
+               </small>
+              </small>
+          </div>
+         
+        
+        </td>
+      </tr>
+    </tbody>
+  </table>

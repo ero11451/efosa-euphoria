@@ -1,0 +1,170 @@
+.side-nav {
+  position: fixed;
+  /*   top: 41px; */
+  left: 0;
+  height: 100%;
+  width: 65px;
+  background: #fff;
+  padding: 0px;
+  z-index: 99;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07);
+  /*   box-shadow: 0 1px 2px rgba(0,0,0,0.07),
+                0 2px 4px rgba(0,0,0,0.07),
+                0 4px 8px rgba(0,0,0,0.07),
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07),
+                0 32px 64px rgba(0,0,0,0.07); */
+  &.active {
+    width: 240px;
+    .menu-items {
+      li {
+        .sub-menu {
+          margin-left: 200px;
+          &.show {
+            margin-left: 240px;
+            li {
+              &:hover {
+                .sub-menu {
+                  margin-top: -35px;
+                  margin-left: 240px;
+                  display: block;
+                  visibility: visible;
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .menu-items {
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      &.active {
+        & > a {
+          overflow: hidden;
+          background: #4976ba1e;
+          color: #4976ba;
+          span {
+            &.marker {
+              position: absolute;
+              display: block;
+              background-color: #4976ba;
+              width: 5px;
+              height: 100%;
+              border-radius: 3px;
+              &::after {
+                position: absolute;
+                content: "";
+                border-top: 110px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 110px solid transparent;
+                border-left: 51px solid #4976ba;
+                margin-left: -35px;
+                top: -171%;
+              }
+            }
+          }
+        }
+      }
+      a {
+        position: relative;
+        display: block;
+        /*     border-bottom: 1px solid rgb(221, 219, 219); */
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: inherit;
+        transition: color 0.3s ease;
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+          color: #4682db;
+          background: #4976ba1e;
+        }
+        i {
+          font-size: 20px;
+          width: 70px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          flex: 0 0 auto;
+          &.more {
+            display: none;
+          }
+        }
+        span {
+          font-size: 0.8rem;
+          flex: 0 0 auto;
+        }
+      }
+      &.has-subMenu {
+        a {
+          i.more {
+            display: inherit;
+            position: absolute;
+            right: 0;
+            width: 30px;
+          }
+        }
+      }
+      .sub-menu {
+        position: fixed;
+        width: 240px;
+        margin-left: 30px;
+        margin-top: -50px;
+        display: block;
+        z-index: 1000;
+        list-style: none;
+        background: #fff !important;
+        box-shadow: 0 1px 2px rgb(136 136 136 / 7%),
+          0 2px 4px rgb(136 136 136 / 7%), 0 4px 8px rgb(136 136 136 / 7%),
+          0 8px 16px rgb(136 136 136 / 7%), 0 16px 58px rgb(136 136 136 / 7%),
+          0 -14px 52px rgb(136 136 136 / 7%);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+        visibility: hidden;
+        opacity: 0;
+        .sub-menu {
+          margin-top: -35px;
+        }
+        &.show {
+          margin-left: 60px;
+          visibility: visible;
+          opacity: 1;
+          li {
+            .sub-menu{
+              margin-left: 200px;
+              z-index: 900;
+            }
+            &:hover {
+              .sub-menu {
+                margin-top: -35px;
+                margin-left: 240px;
+                display: block;
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+          }
+        }
+        li {
+          a {
+            padding: 0.5rem 0.7rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

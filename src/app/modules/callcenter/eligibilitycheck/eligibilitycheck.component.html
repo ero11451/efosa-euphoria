@@ -1,0 +1,115 @@
+<div class="page large-page">
+    <header class="page-header">Eligibility Check</header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <fieldset >  
+            <legend><small>
+                Record Filing
+            </small> </legend>
+            <div class="row qaz" >   
+             <div class="col-md-6 "  >
+                    <div class="form-group">
+                      <label for="">Enrolee Number</label>
+                      <input type="email" class="form-control p-2"  placeholder="Enter enrolee registeration number">
+                   
+                    </div>
+                </div>                 
+             <div class="col-md-6  mt-4"  >
+                <button type="button" name="" id="" class="btn btn-outline-danger  btn-block">
+                    <i class="bx bx-search-alt-2 mr-2"></i>
+                    Search Enrolee
+                </button>
+             </div>      
+           </div>
+          </fieldset>
+        <div class="x-datatable compressed mb-1" style="height: 80px">
+            <table class="fixed-header">
+              <thead>
+                <tr>
+                  <th><span>Name</span></th>
+                  <th><span>Phone Number</span></th>
+                  <th><span>Email Address</span></th>
+                  <th><span>Gender</span></th>
+                  <th><span>Genotype</span></th>
+                  <th><span>Blood Group</span></th>
+                  <th><span>Religion</span></th>
+                  <th><span>DOB</span></th>
+                  <th><span>Dependants</span></th>
+                  <!-- <th><span class="text-center">Action</span></th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                  <td><span>James Etowa</span></td>
+                  <td><span>08011122233</span></td>
+                  <td><span>Jamesetowa@gmail.com</span></td>
+                  <td><span>Male</span></td>
+                  <td><span>AA</span></td>
+                  <td><span>A+</span></td>
+                  <td><span>Christain</span></td>
+                  <td><span>27/10/1972</span></td>
+                  <td><span></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <fieldset >  
+            <legend><small>
+                Policy Details
+            </small> </legend>
+            <div class="row qaz" >                
+             <div class="col-md-3 "  >
+               <small class="text-muted">Policy ID</small>
+               <p class="text-bold">P1908-2130</p>
+             </div>           
+             <div class="col-md-3 "  >
+               <small class="text-muted">Plan</small>
+               <p class="text-bold">Gold </p>
+             </div>    
+                    
+             <div class="col-md-3 "  >
+                <small class="text-muted">Start Date</small>
+                <p class="text-bold">04/11/2021 </p>
+              </div>    
+                     
+             <div class="col-md-3 "  >
+                <small class="text-muted">End Date</small>
+                <p class="text-bold">04/11/2021</p>
+              </div>    
+           </div>
+          </fieldset>
+      
+        <p>Benefits And Limits</p>
+
+        <div class="x-datatable compressed " style="height: 200px">
+          <table class="fixed-header">
+            <thead >
+              <tr >
+                <th><span>S/N</span></th>
+                <!-- <th><span>Description</span></th> -->
+                <th><span>Benefit Name</span></th>
+                <th><span>Category</span></th>
+                <th><span class="text-center">Limit Types</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of mainData">
+                <td><span>{{data.name}}</span></td>
+                <td><span>{{data.description}}</span></td>
+                <td><span>Innocent Guilty</span></td>
+                <td><span>{{data.dateCreated  }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+  <div class="action-area">
+    <button class="btn btn-primary" > 
+         <i class="bx bx-search-alt-2 mr-2"></i>
+         Search Provider on Plan
+       </button>
+  </div>
+  </div>
+  

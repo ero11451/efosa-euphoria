@@ -1,0 +1,52 @@
+<div class="login-container">
+  <div class="login-content">
+    <h3 class="app-name">Euphoria</h3>
+    <span class="welcome">Welcome Back!</span>
+    <div class="title">Log in to your account</div>
+    <form [formGroup]="formLogin">
+      <div class="form-group">
+        <label>User ID</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Enter Username"
+          formControlName="username"
+        />
+        <div
+          class="form-error"
+          *ngIf="
+            formLogin.controls.username.invalid &&
+            formLogin.controls.username.touched
+          "
+        >
+          <span>Please enter a valid email address! </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Enter Password"
+          formControlName="password"
+        />
+        <div
+          class="form-error"
+          *ngIf="
+            formLogin.controls.password.hasError('minlength') ||
+            formLogin.controls.password.invalid &&
+            formLogin.controls.password.touched
+          "
+        >
+          <span> Enter a valid password!</span>
+        </div>
+        <small class="form-text text-muted text-right">
+          <a href="#">Forgot Password?</a>
+        </small>
+      </div>
+      <button (click)="login()" type="button" class="btn btn-primary btn-block">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="page large-page">
+    <header class="page-header">Pre-Authorization Code </header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <fieldset >  
+            <legend><small>
+                Filter By
+            </small> </legend>
+            <div class="row qaz" >   
+             <div class="col-md-2 "  >
+                    <div class="form-group">
+                      <label for="">Request Date</label>
+                      <input type="text" class="form-control p-2"  placeholder="From: 21/11/2021"> 
+                    </div>
+                </div>     
+                <div class="col-md-3 mt-1"  >
+                    <div class="form-group">
+                        <label for=""></label>
+                      <input type="text" class="form-control p-2"  placeholder="To: 24/11/2021">
+                    </div>
+                </div>     
+                <div class="col-md-4 mt-1"  >
+                    <div class="form-group">
+                      <label for=""></label>
+                      <input type="text" class="form-control p-2"  placeholder="Search by care category, handler, provider, approval status, serial number, enrolee number, pa code">
+                    </div>
+                </div>       
+             <div class="col-md-3  mt-4"  >
+                <button type="button" name="" id="" class="btn btn-primary  btn-block">
+                   Search 
+                </button>
+             </div>      
+           </div>
+          </fieldset>
+        <div class="x-datatable compressed mb-1" style="height: 400px">
+            <table class="fixed-header">
+              <thead>
+                <tr>
+                  <th><span>S/N</span></th>
+                  <th><span>PA Code</span></th>
+                  <th><span>Provider Name</span></th>
+                  <th><span>Enrolee Number</span></th>
+                  <th><span>Enrolee Name</span></th>
+                  <th><span>Care Category</span></th>
+                  <th><span>Request Date </span></th>
+                  <th><span>Handler Name</span></th>
+                  <th><span>Status</span></th>
+                  <th><span>Last Decision Date</span></th>
+                  <th><span>Decision By</span></th>
+                  <!-- <th><span class="text-center">Action</span></th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of mainData">
+                  <td><span>{{data.name}}</span></td>
+                  <td><span>{{data.description}}</span></td>
+                  <td><span>Innocent Guilty</span></td>
+                  <td><span>{{data.dateCreated  }}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+   
+      </div>
+    </div>
+    
+
+  </div>
+  

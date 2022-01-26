@@ -1,0 +1,124 @@
+<div class="page medium-page">
+  <header class="page-header">Roles</header>
+  <div class="card mb-3">
+    <div class="card-body">
+      <form [formGroup]="roleForm">
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputEmail4">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword4"
+              >Description <small>(Optional)</small></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="A short note about the role"
+              formControlName="description"
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputPassword4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <div class="button-group">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm wide"
+                *ngIf="!isEdit"
+                (click)="addRole()"
+              >
+                Add
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                *ngIf="isEdit"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                *ngIf="isEdit"
+                (click)="updateRole()"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="x-datatable compressed">
+              <table>
+                <thead>
+                  <tr>
+                    <th><span>Name</span></th>
+                    <th><span>Description</span></th>
+                    <th><span>Created By</span></th>
+                    <th><span>Date Created</span></th>
+                    <th><span>Action</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let role of roles">
+                    <td>
+                      <span>{{ role?.name }}</span>
+                    </td>
+                    <td>
+                      <span>{{ role?.description }}</span>
+                    </td>
+                    <td>
+                      <span>{{ role.createdBy }}</span>
+                    </td>
+                    <td>
+                      <span>{{ role.dateCreated | date }}</span>
+                    </td>
+                    <td>
+                      <span>
+                        <a
+                          class="btn btn-sm btn-clean btn-icon mr-2"
+                          tooltip="View users"
+                          (click)="viewRoleUsers(role)"
+                        >
+                          <i class="bx bxs-user-detail"></i>
+                        </a>
+                        <a
+                          class="btn btn-sm btn-clean btn-icon mr-2"
+                          tooltip="Edit role"
+                          (click)="editRole(role)"
+                        >
+                          <i class="bx bx-pencil"></i>
+                        </a>
+                        <a
+                          class="btn btn-sm btn-clean btn-icon"
+                          tooltip="Delete role"
+                          (click)="deleteRole(role)"
+                        >
+                          <i class="bx bx-trash"></i>
+                        </a>
+                        <a
+                          class="btn btn-sm btn-clean btn-icon"
+                          tooltip="Manage permission"
+                          (click)="managePermissions(role)"
+                        >
+                        <i class='bx bx-shape-circle'></i>
+                        </a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

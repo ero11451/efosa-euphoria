@@ -1,0 +1,36 @@
+<div
+  class="side-nav active"
+  [ngClass]="{
+    active: menuState === 'expanded'
+  }"
+>
+  <perfect-scrollbar>
+    <ul class="menu-items">
+      <li
+        class="has-subMenu"
+        *ngFor="let menu of menus"
+        [ngClass]="{
+          'has-subMenu': menu.type === 'parent',
+          active: menu.active
+        }"
+      >
+        <a (click)="ItemClick(menu)">
+          <i class="bx bx-chevron-right more"></i>
+          <span class="marker"></span>
+          <i class="{{ menu.icon }}"></i>
+          <span>{{ menu.title }}</span>
+        </a>
+        <ul class="sub-menu" [ngClass]="{ show: menu.showSubMenu === true }">
+          <li *ngFor="let sub of menu.subMenus">
+            <a (click)="SubItemClick(sub)">{{ sub.title }}</a>
+            <ul class="sub-menu">
+              <li *ngFor="let sub1 of sub.subMenus">
+                <a (click)="SubItemClick(sub1)">{{ sub1.title }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </perfect-scrollbar>
+</div>

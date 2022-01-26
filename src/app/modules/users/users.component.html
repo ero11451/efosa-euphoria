@@ -1,0 +1,152 @@
+<div class="page large-page">
+  <!--   <header class="page-header">All users</header> -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">All Users</h5>
+      <div class="card-toolbar align-right mb-2">
+        <div class="my-lg-0 my-1">
+          <a
+            class="btn btn-sm btn-light-primary text-uppercase mr-2"
+            (click)="openAddUser()"
+          >
+            <i class="bx bx-plus"></i>
+            Add New User
+          </a>
+        </div>
+      </div>
+      <p class="card-text"></p>
+      <div class="x-datatable compressed">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <span style="width: 120px">Name/Email</span>
+              </th>
+              <th>
+                <span>Username</span>
+              </th>
+              <th>
+                <span>Unit</span>
+              </th>
+              <th>
+                <span>Group</span>
+              </th>
+              <th>
+                <span>Status</span>
+              </th>
+              <th>
+                <span>Created By</span>
+              </th>
+              <th>
+                <span>Date Created</span>
+              </th>
+              <th>
+                <span>Action</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <span
+                  ><div class="d-flex align-items-center">
+                    <div
+                      class="
+                        symbol symbol-40 symbol-light-success
+                        flex-shrink-0
+                      "
+                    >
+                      <span class="symbol-label font-size-h4 font-weight-bold"
+                        >C</span
+                      >
+                    </div>
+                    <div class="ml-3">
+                      <div
+                        class="
+                          text-dark-75
+                          font-weight-bolder font-size-lg
+                          mb-0
+                        "
+                      >
+                        {{ user?.firstName }} {{ user?.lastName }}
+                      </div>
+                      <a
+                        class="text-muted text-hover-primary"
+                      >
+                        {{ user?.email }}
+                      </a>
+                    </div>
+                  </div></span
+                >
+              </td>
+              <td>
+                <span>
+                  <a class="text-primary">{{
+                    user?.username
+                  }}</a>
+                </span>
+              </td>
+              <td>
+                <span> {{ user?.unit }}</span>
+              </td>
+              <td>
+                <span> {{ user?.group }}</span>
+              </td>
+              <td>
+                <span
+                  ><span
+                    class="label label-sm label-inline"
+                    [ngClass]="{
+                      'label-light-success': user?.status === 'Active',
+                      'label-light-light': user?.status === 'Inactive'
+                    }"
+                    >{{ user?.status }}</span
+                  ></span
+                >
+              </td>
+              <td>
+                <span>{{ user?.createdBy }}</span>
+              </td>
+              <td>
+                <span>{{ user?.dateCreated | date }}</span>
+              </td>
+              <td>
+                <div class="nx-dropdown" nx-dropdown>
+                  <a (click)="(false)" class="btn btn-action">
+                    <i class="bx bx-dots-vertical-rounded"></i
+                  ></a>
+                  <div class="dropdown-content right">
+                    <ul>
+                      <li>
+                        <a class="dropdown-item custom">
+                          <i class='bx bx-pencil' ></i>Edit User</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item custom"
+                          ><i class='bx bx-trash' ></i>Remove
+                          user</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item custom" (click)="manageRoles(user)">
+                          <i class='bx bx-user-circle'></i> Manage roles</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item custom" (click)="managePermissions(user)">
+                          <i class='bx bxs-user-rectangle' ></i> Manage
+                          permissions</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="page medium-page">
+  <header class="page-header">Add Benefits to Plan</header>
+  <div class="card mb-3">
+    <div class="card-body">
+      <ul class="tree" >
+        <li   *ngFor="let cat of categories; let i = index">
+          <a class="parent"  (click)="toggle($event.currentTarget)">
+            <div class="checkbox">
+              <input id="cat{{ i }}" type="checkbox" 
+                (change)="addCategory($event, cat.benefitCategoryId)"
+                
+                [checked]="cat.isBenefitCategorySelected"  />
+              <label for="cat{{ i }}"></label>
+            </div>
+            <span>{{ cat.benefitCategoryName}} </span>
+          </a>
+          <!-- this is  -->
+          <ul class="children" >
+            <li *ngFor="let benefit of cat.benefits; let j = index">
+              <a class="node" (click)="toggle($event.currentTarget)">
+                <div class="checkbox">
+                  <input 
+                    [name]=" cat.benefitCategoryId"
+                    [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="benefit.isBenefitSelected"
+                    [checked]="benefit.isBenefitSelected"
+                    id="benefit{{ i }}{{ j }}" type="checkbox"
+                    (change)="addBenefit(
+                      $event, 
+                      cat.benefitCategoryId, 
+                      benefit.benefitId)" />
+                  <label for="benefit{{ i }}{{ j }}"></label>
+                </div>
+                <span>{{ benefit.benefitName }}  </span>
+              </a>
+              <ul class="children">
+               
+                  <div *ngFor="let limit of benefit.limitListViewModel  let p = index ">
+                      <li >
+                        <a class="node"  >
+                          <div class="checkbox">
+                            <input id="111{{ i }}{{ j }}{{limit.limitType}}" 
+                               [(ngModel)]="limit.isSelected"
+                               (change)="addLimitType(
+                                $event, cat.benefitCategoryId, 
+                                benefit.benefitId, limit.limitType, limit.limit)"
+                              [checked]="limit.isSelected"
+                              type="checkbox"/>
+                            <label for="111{{ i }}{{ j }}{{limit.limitType}}"></label>
+                          </div>
+                          <span> {{limit.limitType}} </span>
+                        </a>
+                        <div class="controls" *ngIf="limit.limitType !== 'List of services' && limit.limitType !== 'Period'">
+                          <input 
+                          [disabled]="!limit.isSelected"
+                           name="limit"
+                           type="number" 
+                           [(ngModel)]="limit.limit"
+                            />
+                        </div>
+                        <div  class="controls" *ngIf="limit.limitType === 'Period'">
+                          <select  
+                            [(ngModel)]="limit.limitPeriod"  
+                            [disabled]="!limit.isSelected">
+                            <option  
+                              *ngFor="let  period of Periods" value = "{{period.time}}" >
+                              {{period.time}}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="controls" style="min-width: 50px; margin-left: 0rem;" *ngIf="limit.limitType === 'Period'">
+                          <input type="number" required
+                            [(ngModel)]="limit.limitTime" 
+                            [disabled]="!limit.isSelected"
+                           />
+                           {{limit.limit}}
+                        </div>  
+                      
+                    <a class="node" >
+                       <div *ngIf="limit.limitType === 'List of services'"
+                          class="btn-group"  dropdown #dropdown="bs-dropdown" [autoClose]="false">
+                            <button id="button-basic" dropdownToggle type="input" 
+                            class="controls list-btn dropdown-toggle"
+                                    aria-controls="dropdown-basic">
+                                    Select services <span class="caret ml-4"></span>
+                            </button>
+                              
+                            <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+                            role="menu" aria-labelledby="button-triggers-manual">
+                            <div role="menuitem" class="dropdown-item" 
+                            *ngFor="let service of limit.service; let i=index;">
+                               
+                              <div 
+                                class="checkbox" *ngIf="service.service">
+                                <input type="checkbox"  
+                                [(ngModel)]="service.isSelected"
+                                [checked]="service.isSelected"
+                                id="{{i}} {{p}} 11 {{j}}">
+                                <label  for="{{i}} {{p}} 11 {{j}}"> </label>
+                              </div> 
+                              <span *ngIf="service.service" > {{service.service}}  </span>
+                                </div>
+                                
+                            </div>
+                            <small class="text-danger ml-1" *ngIf="!limit.service">No list of service found .</small>
+                            
+                          </div>
+                          <br>
+                        </a>
+                      </li>
+                  </div>
+              </ul>
+            </li>
+          </ul>
+          
+        </li>
+      </ul>
+    </div>
+   
+  </div>
+  
+  
+  <div class="action-area">
+    <button class="btn btn-primary"  (click)="submit()">Proceed</button>
+  </div>
+  
+</div>

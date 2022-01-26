@@ -1,0 +1,57 @@
+<div class="card-body">
+  <div class="header">
+    <label *ngIf="isModel">Add Providers</label>
+    <a (click)="bsModalRef.hide()"><i class='bx bx-x'></i></a>
+  </div>
+  <div class="search-bar" *ngIf="isModel">
+    <div class="right-content">
+      <div class="form-group has-search">
+        <i class="bx bx-search-alt-2 form-control-feedback"></i>
+        <input 
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="searchText"
+    
+        placeholder="Search" />
+      </div>
+      <div class="spinner-border text-primary" *ngIf="isSearching" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="x-datatable compressed mb-3" style="height: 350px">
+    <table class="fixed-header">
+      <thead>
+        <tr>
+          <th *ngIf="isModel">
+            <span>
+              <!-- <input type="checkbox" /> -->
+            </span>
+          </th>
+          <!-- <th><span>Code</span></th> -->
+          <th><span>Name</span></th>
+          <th><span>State</span></th>
+          <th><span>Area</span></th>
+          <!-- <th><span>Address</span></th> -->
+          <th><span>Tier</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let data of providerData | filter:searchText" >
+          <td *ngIf="isModel">
+            <span> <input type="checkbox"  (change)="onCheckboxChange($event, data)" /></span>
+          </td>
+          <!-- <td><span>2345675</span></td> -->
+          <td><span>{{data.providerName}}</span></td>
+          <td><span> {{data.providerAddress}}  </span></td>
+          <td><span>{{data.providerState}}</span></td>
+          <!-- <td><span>{{data.location}}</span></td> -->
+          <td><span>{{data.tier}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-right" *ngIf="isModel">
+    <button (click)="  triggerEvent('') " class="btn btn-primary btn-sm">Add Selected Providers</button>
+  </div>
+</div>

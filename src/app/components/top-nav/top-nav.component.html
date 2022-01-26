@@ -1,0 +1,59 @@
+<div
+  class="logo-section"
+  [ngClass]="{
+    'menu-active': menuState === 'expanded'
+  }"
+>
+  <div class="content">Euphoria Web</div>
+</div>
+
+<div class="menu-trigger" (click)="toggleSidebar()">
+  <i class="bx bx-menu" id="btn"></i>
+</div>
+
+<button backButton class="btn back-button">
+  <i class="bx bx-arrow-back"></i>
+</button>
+
+<nav>
+  <div class="wrapper">
+    <ul>
+      <li *ngFor="let menu of menus">
+        <a href="#">{{ menu.title }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="top-left">
+  <section class="notification">
+    <a>
+      <i class="bx bxs-bell"></i>
+    </a>
+  </section>
+  <section class="user-profile">
+    <a (click)="profileClick()">
+      <div class="profile-pic">
+        <img src="../../../assets/images/user.jpg" />
+      </div>
+      <div class="profile-name">
+        <span>{{ user?.firstName }} {{ user?.lastName }}</span>
+      </div>
+      <i class="bx bx-chevron-down"></i
+    ></a>
+    <div class="dropdown" [ngClass]="{ show: showProfileDetails }">
+      <div class="top-content">
+        <div class="profile-image">
+          <img src="../../../assets/images/user.jpg" />
+        </div>
+        <div class="identity">
+          <label>Efosa Idemudia</label>
+          <span>efosa.edemudia@axamansard.com</span>
+        </div>
+      </div>
+      <div>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,35 @@
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 1.5rem;
+  .right-content {
+    width: 60%;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+/*   border: 1px solid red; */
+  margin-bottom: 0.5rem;
+  label {
+    color: var(--axa-ocean-blue);
+    font-size: 1.3rem;
+    font-weight: 600;
+    position: absolute;
+    margin-top: 0.5rem;
+  }
+  a {
+    font-size: 1.7rem;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    color: var(--axa-red);
+  }
+}

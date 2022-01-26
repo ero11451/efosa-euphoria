@@ -1,0 +1,26 @@
+<div class="select-box" [ngClass]="{ 'show-items': showItems }">
+  <div
+    class="selected"
+    [ngClass]="{
+      'text-only': !selectedOption?.image,
+      'with-image': selectedOption?.image
+    }"
+    (click)="toggleItems()"
+  >
+    <label class="place-holder" *ngIf="!selectedOption">{{
+      placeHolder
+    }}</label>
+    <ng-container *ngIf="selectedOption">
+      <div class="image" *ngIf="selectedOption?.image">
+        <img src="{{ selectedOption?.image }}" />
+      </div>
+      <div class="text">
+        <h3>{{ selectedOption?.text }}</h3>
+        <label>{{ selectedOption?.subText }}</label>
+      </div>
+    </ng-container>
+  </div>
+  <div class="select-items animated">
+    <ng-content select="select-item"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="page medium-page">
+    <header class="page-header">Drug Inventory</header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class=" mb-3">
+          <small>Drugs Inventory</small>
+        </div>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <div class="form-group has-search ">
+                      <i class="bx bx-search-alt-2 form-control-feedback"></i>
+                      <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="Search" />
+                    </div>
+                  </div>
+              <div class="col-md-4">
+               <button type="button" class="btn btn-block btn-outline-danger">
+                Bulk Upload
+               </button>
+              </div>
+              <div class=" col-md-4">
+               <button type="button" (click)="addDrug()" class="btn  btn-block btn-outline-primary">
+                Add New Drug
+               </button> 
+                <!-- description -->
+              </div>   
+            </div>
+          
+            </form>
+        <div class="x-datatable compressed mb-2" style="height: 400px">
+          <table class="fixed-header">
+            <thead>
+              <tr>
+                <!-- <th>
+                  <span>
+                    <input type="checkbox" />
+                  </span>
+                </th> -->
+                <!-- <th><span>Code</span></th> -->
+                <th><span>Drug Name</span></th>
+                <th><span>Description</span></th>
+                <th><span>Drug Code</span></th>
+                <th><span>Strength</span></th>
+                <th><span>Quantity</span></th>
+                <th><span>Price </span></th>
+                <th><span>Hospital Price</span></th>
+                <th><span class="text-center">Action</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let data of selectedList| filter:searchText
+                "
+              >
+                <td>
+                  <span> <input type="checkbox" 
+                    (change)="onCheckboxChange($event, data)"
+                    /></span>
+                </td>
+                <!-- <td><span>2345675</span></td> -->
+                <td><span>{{data.name}}</span></td>
+                <td><span>{{data.state}}</span></td>
+                <td><span>{{data.area}}</span></td>
+                <td><span>{{data.location}}</span></td>
+                <td><span>{{data.tier.name}}</span></td>
+                <td>
+                  <span class="text-center" (click)="removeAnItem(data)"><i class="bx bx-trash"></i></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+    </div>
+  
+    <div class="action-area">
+      <button class="btn btn-primary">Proceed</button>
+    </div>
+  </div>
+  
+  

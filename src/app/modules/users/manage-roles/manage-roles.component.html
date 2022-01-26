@@ -1,0 +1,59 @@
+<div class="page medium-page">
+  <header class="page-header">
+    Manage roles for {{ user?.firstName }} {{ user?.lastName }}
+  </header>
+  <div class="card mb-3">
+    <!--begin::Form-->
+    <form>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="x-datatable compressed">
+              <table>
+                <thead>
+                  <tr>
+                    <th><span>Role</span></th>
+                    <th><span>Status</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let role of userRole?.roles">
+                    <td>
+                      <span>{{ role.roleName }}</span>
+                    </td>
+                    <td>
+                      <span>
+                        <div class="checkbox">
+                          <input
+                            id="Checkbox{{ role.roleId }}"
+                            name="Checkbox{{ role.roleId }}"
+                            type="checkbox"
+                            [checked]="role.hasRole"
+                            [(ngModel)]="role.hasRole"
+                          />
+                          <label for="Checkbox{{ role.roleId }}"></label>
+                        </div>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--end::Form-->
+  </div>
+  <div class="action-area">
+    <div class="text-right">
+      <button
+        type="button"
+        class="btn btn-primary float-right"
+        (click)="saveRoles()"
+      >
+        Save roles
+      </button>
+    </div>
+  </div>
+</div>

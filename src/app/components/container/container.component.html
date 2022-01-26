@@ -1,0 +1,19 @@
+<div
+  class="main-container"
+  [ngClass]="{
+    'menu-active': menuState === 'expanded'
+  }"
+>
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="main"
+        [ngClass]="{
+          'menu-active': menuState === 'expanded'
+        }"
+      >
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

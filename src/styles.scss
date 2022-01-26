@@ -1,0 +1,263 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
+
+@import "~boxicons";
+
+@import "theme/variables.scss";
+@import "theme/layout.scss";
+@import "theme/forms.scss";
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.xlg-modal{
+  min-width: 1000px;
+}
+::-webkit-scrollbar:hover {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--axa-ocean-blue);
+  transition: all 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--axa-ocean-blue);
+}
+
+.main {
+  width: calc(100% - 65px);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  &.menu-active {
+    width: calc(100% - 240px);
+  }
+}
+
+.main > * {
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &.large-page {
+    width: 100%;
+  }
+  &.medium-page {
+    width: 80%;
+  }
+  &.small-page {
+    width: 50%;
+  }
+
+  .page-header {
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--axa-ocean-blue);
+  }
+
+  .card {
+    border-radius: 6px;
+    box-shadow: var(--box-shadow-1);
+    width: 100%;
+  }
+}
+
+.text-color-ocean-blue {
+  color: var(--axa-ocean-blue);
+}
+
+.x-datatable {
+  width: 100%;
+  overflow: auto;
+  table {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    overflow: hidden;
+    thead {
+      visibility: visible;
+      position: relative;
+      tr {
+        border-bottom: 1px solid #ebedf3;
+        width: 100%;
+        th {
+          text-align: left;
+          padding: 0.75rem 1rem 0.75rem 0;
+          font-size: 0.9rem;
+          vertical-align: middle;
+          span {
+            color: #b5b5c3;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            display: inline-block;
+            width: 100%;
+          }
+        }
+      }
+    }
+    tbody {
+      visibility: visible;
+      position: relative;
+      tr {
+        border-bottom: 1px solid #ebedf3;
+        width: 100%;
+        td {
+          transition: all 0.3s ease;
+          vertical-align: middle;
+          padding: 1rem 1rem 1rem 0;
+          font-size: 0.9rem;
+          span {
+            color: #3f4254;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            width: 100%;
+            label {
+              &.checkbox {
+                display: flex;
+                align-items: center;
+                position: relative;
+                text-align: left;
+                cursor: pointer;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                padding: 0;
+                margin: 0 0 0 0;
+                top: 1px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.compressed {
+    table {
+      tbody {
+        tr {
+          td {
+            padding: 0.5rem 1rem 0.5rem 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fixed-header {
+  overflow-y: auto !important;
+}
+.fixed-header thead {
+  z-index: 100;
+}
+
+.fixed-header thead th {
+  position: sticky !important;
+  top: 0 !important;
+  background: #fff !important;
+}
+
+.vertical-divider {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.action-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.search-bar {
+  .right-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    .has-search {
+      width: 50%;
+    }
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+.symbol {
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 0.42rem;
+}
+
+.symbol .symbol-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #3f4254;
+  background-color: #f3f6f9;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 0.42rem;
+}
+
+.symbol.symbol-40 .symbol-label {
+  width: 40px;
+  height: 40px;
+}
+
+.symbol.symbol-light-success .symbol-label {
+  background-color: var(--axa-aqua-green);
+  color: var(--axa-teal);
+}
+
+.modal.fade .modal-dialog.modal-dialog-zoom {
+  -webkit-transform: translate(0, 0) scale(0.5);
+  transform: translate(0, 0) scale(0.5);
+}
+.modal.show .modal-dialog.modal-dialog-zoom {
+  -webkit-transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(1);
+}
+
+.alert-modal {
+  max-width: 400px !important;
+  .modal-content {
+    border-radius: 10px !important;
+    overflow: hidden;
+    border: none;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  }
+}

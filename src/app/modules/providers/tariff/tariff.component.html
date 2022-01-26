@@ -1,0 +1,57 @@
+<div class="page small-page">
+    <header class="page-header">Tariff Upload</header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <form [formGroup]="planForm">
+ 
+        
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="inputEmail4">Tier</label>
+              <input
+                formControlName = 'sname'
+                type="text"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Select Tier Level"
+              />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail4 ">Click to upload tariff template</label>
+                <div class="input-group">
+                   
+                    <input type="text" class="form-control" id="validationTooltipUsername" 
+                    placeholder="" aria-describedby="validationTooltipUsernamePrepend" required>
+                    <div class="input-group-prepend border-0">
+                        <span class="input-group-text bg-white" id="validationTooltipUsernamePrepend">
+                           <i class="bx bxs-folder      form-control-feedback"></i>
+                        </span>
+                      </div>
+                    </div>
+              </div>
+           <div class="col-md-2">
+               
+            <button type="button" class="btn btn-primary mt-4">
+                Upload
+            </button>
+           </div>
+          </div>
+        </form>
+        <div class="text-center">
+            <p>OR</p>
+            <button  type="button" class="btn btn-outline-primary col-md-7">
+                Download
+            </button>
+        </div>
+     
+      </div>
+    </div>
+    <!-- <div class="action-area">
+      <div class="text-right">
+        <button (click)="moveNext()" [disabled]="planForm.invalid" type="button" class="btn btn-primary">
+            Initiate Request
+        </button>
+      </div>
+    </div> -->
+  </div>
+  

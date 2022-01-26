@@ -1,0 +1,50 @@
+<div class="page small-page">
+    <header class="page-header">Suspension</header>
+    <div class="card mb-3">
+      <div class="card-body">
+         <p>Please fill all field</p>
+        <form [formGroup]="planForm">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Provider Name</label>
+              <input
+                formControlName = 'name'
+                type="text"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Enter the name of the plan"
+              />
+            </div>
+
+        <div class="col-md-12">
+            <div>Leeway period?</div>
+            <div class="small mb-3 text-color-ocean-blue">
+              Please tick as appropriate
+            </div>  
+        </div>
+          
+         <div class="col-md-12">
+            <div class="checkbox m-1">
+             <input id="55" type="checkbox" />
+             <label for="55">Days</label> 
+            </div>
+         </div>
+             
+             
+           <div class="form-group col-md-12">
+             <label for="">Reason for suspending entity</label>
+             <textarea class="form-control" name="" id="" rows="3"></textarea>
+           </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="action-area">
+      <div class="text-right">
+        <button (click)="moveNext()" [disabled]="planForm.invalid" type="button" class="btn btn-primary">
+            Initiate Request
+        </button>
+      </div>
+    </div>
+  </div>
+  

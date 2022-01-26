@@ -1,0 +1,22 @@
+<div class="header">
+  <label *ngIf="model">Providers</label>
+  <!-- <a (click)="bsModalRef.hide()"><i class='bx bx-x'></i></a> -->
+</div>
+    <table class="fixed-header">
+      <thead>
+        <tr>
+          <th><span>Name</span></th>
+          <th><span>State</span></th>
+          <th><span>Address</span></th>
+          <th><span class="text-center">Tier</span></th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr  *ngFor="let data of providers">
+          <td><span>{{data.providerName}}</span></td>
+          <td><span>{{data.providerState}}</span></td>
+          <td><span>{{data.providerAddress }}</span></td>
+          <td><span>{{data.tier}}</span></td>
+        </tr>
+      </tbody>
+    </table>

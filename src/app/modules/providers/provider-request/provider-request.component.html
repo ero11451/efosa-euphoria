@@ -1,0 +1,89 @@
+<div class="page medium-page">
+    <header class="page-header">Provider Request</header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <form [formGroup]="planForm">
+            <div>
+                <div class="checkbox">
+                    <input id="11" type="checkbox" />
+                    <label for="11"><small>Hospital</small></label>
+                  </div>
+                  <div class="checkbox mt-2 mb-2">
+                    <input id="11" type="checkbox" />
+                    <label for="11"><small>Pharmacy</small></label>
+                  </div>
+            </div>
+          
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="small mb-3 text-color-ocean-blue">
+                Fill all input field 
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Provider Name</label>
+              <input
+                formControlName = 'name'
+                type="text"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Enter the name of the plan"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">
+                Contact Person’s Name<small></small>
+              </label>
+              <input
+                formControlName = 'premium'
+                type="text"
+                class="form-control"
+                id="inputPassword4"
+                placeholder="Enter premium"
+              />
+              <div class="text-danger"
+              *ngIf=" planForm.get('premium').invalid
+               && (planForm.get('premium').dirty
+               ||  planForm.get('premium').touched)">
+               Please provide a valid value.
+             </div> 
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4"
+                >Phone Number </label
+              >
+              <input
+                formControlName = 'description'
+                type="text"
+                class="form-control"
+                id="inputPassword4"
+                placeholder=""
+              />
+              <div class="text-danger"
+              *ngIf=" planForm.get('description').invalid && 
+              (planForm.get('description').dirty ||  
+              planForm.get('description').touched)">
+               Please provide a valid value.
+             </div> 
+            </div>
+            <div class="form-group col-md-6"  >
+              <label for='categoryId'>Email Address</label>
+              <input id="categoryId" formControlName = 'basePlanId' class="form-control"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="action-area">
+      <div class="text-right">
+        <button (click)="moveNext()" [disabled]="planForm.invalid" type="button" class="btn btn-primary">
+            Initiate Request
+        </button>
+      </div>
+    </div>
+  </div>
+  

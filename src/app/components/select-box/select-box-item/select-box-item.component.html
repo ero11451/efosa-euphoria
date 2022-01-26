@@ -1,0 +1,17 @@
+<ng-content *ngIf="type === 'template'"></ng-content>
+<div
+  *ngIf="type === 'default'"
+  class="select-item"
+  [ngClass]="{ 'text-only': !image, 'with-image': image }"
+  (click)="itemSelected()"
+>
+  <div class="image" *ngIf="image">
+    <img src="{{ image }}" />
+  </div>
+  <div class="text">
+    <h3>
+      {{ text }} <ng-content *ngIf="text.trim().length <= 0"></ng-content>
+    </h3>
+    <label> {{ subText }} </label>
+  </div>
+</div>

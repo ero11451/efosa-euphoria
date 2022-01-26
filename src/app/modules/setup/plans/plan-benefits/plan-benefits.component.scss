@@ -1,0 +1,124 @@
+ul.tree,
+ul.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.tree ul {
+  margin-left: 30px;
+  display: block;
+  // overflow: auto;
+// overflow: clip;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+  &.active {
+    max-height: 100rem;
+    overflow: visible;
+  }
+}
+ul.tree li {
+  max-height: fit-content;
+  margin: 0;
+  padding: 0 7px;
+  line-height: 20px;
+  color: #369;
+  font-weight: normal;
+  border-left: 1px dashed rgb(100, 100, 100);
+}
+ul.tree li:last-child {
+  max-height: fit-content;
+  border-left: none;
+}
+ul.tree li:before {
+  position: relative;
+  top: 0;
+  height: 1em;
+  width: 30px;
+  color: white;
+  border-bottom: 1px dashed rgb(100, 100, 100);
+  content: "";
+  display: inline-block;
+  left: -7px;
+}
+ul.tree li:last-child:before {
+  border-left: 1px dashed rgb(100, 100, 100);
+}
+
+ul.tree {
+  .parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: -23px 0 9px 23px;
+    background: #4976ba1f;
+    color: var(--axa-ocean-blue);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    .checkbox {
+      margin-left: 0;
+    }
+  }
+  .children {
+    .node {
+      margin-bottom: 1rem;
+      display: inline-block;
+      min-width: 180px;
+      .checkbox {
+        display: inline-block;
+        position: relative;
+        margin-left: -10px;
+      }
+      span {
+        display: inline-block;
+      }
+    }
+    &.active {
+      margin-bottom: 0.2rem;
+    }
+    .controls {
+      display: inline-block;
+      margin-left: -2rem;
+      input,
+      select {
+        display: inline-block;
+        margin-right: 1rem;
+        height: calc(1em + 0.5rem + 2px);
+        width: 150px;
+        font-weight: 400;
+        line-height: 1.5;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.15rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        outline: none !important;
+        box-shadow: none !important;
+        font-size: 0.9rem;
+        color: #75797e;
+      }
+     
+      input {
+        padding: 0.375rem 0.3rem;
+      }
+    }
+  }
+}
+.list-btn{
+  height: calc(1em + 0.5rem + 2px);
+  width: 150px;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.15rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 0.9rem;
+  color: #75797e;
+}

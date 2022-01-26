@@ -1,0 +1,54 @@
+<div class="page medium-page">
+    <header class="page-header">Preview</header>
+    <div class="card mb-3">
+      <div class="card-body">
+          <fieldset >  
+            <legend>Plan Details (Customized)</legend>
+            <div class="row qaz" >                
+             <div class="col-md-3 "  >
+               <small class="text-muted">Plan Name</small>
+               <p class="text-bold">{{plan.name}} </p>
+             </div>           
+             <div class="col-md-3 "  >
+               <small class="text-muted">Plan Name</small>
+               <p class="text-bold">{{plan.premium}} </p>
+             </div>    
+             <div class="col-md-6 "  >
+                <small class="text-muted">Plan description</small>
+                <p class="text-bold">{{plan.description}}</p>
+              </div>    
+           </div>
+          </fieldset>
+        <p >Providers (Base Gold)</p>
+        <div *ngIf="benefits.length <= 0" class="text-center text-muted">
+          There are no provider selected
+      </div>
+      <div *ngIf="!benefits" class="text-center text-muted">
+        There are no provider selected
+    </div>
+      <div class="x-datatable compressed mb-2" style="height: fit-content; margin: -20px 0px 0px -10px;"  *ngIf="benefits.length >= 1">
+       <app-planprovider [providers]='providers'></app-planprovider>
+       <!-- <app-ProviderSearchComponent [providers]='providers'></app-ProviderSearchComponent> -->
+      </div>
+        <small class="m-1">To see all, click to</small>
+        <small class="text-primary m-1" (click)="openProvider()">View full provider list</small>
+     
+        <p class="m-1 mt-3">Benefits</p>
+        <div *ngIf="benefits.length <= 0" class="text-center text-muted">
+            There are no benefits selected
+        </div>
+        
+        <div class="x-datatable compressed mb-1" style="height: fit-content;margin: -10px 0px 0px -5px;" *ngIf="benefits.length >= 1">
+           <app-planbenefit [benefits]="benefits"></app-planbenefit>
+        </div>
+        <small class="m-1">To see all, click to</small>
+        <small class="text-primary m-1" (click)="openBenefit()">View full benefit list</small>
+      </div>
+    </div>
+    
+  <div class="action-area d-flex justify-content-between">
+    <button class="btn btn-outline-danger" (click)="goBack()">Return to previous page</button>
+    <button class="btn btn-primary" (click)="approvePlan()">Proceed</button>
+  </div>
+  </div>
+  

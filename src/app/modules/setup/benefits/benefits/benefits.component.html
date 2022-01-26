@@ -1,0 +1,186 @@
+<div class="page medium-page">
+  <header class="page-header">Benefit Setup</header>
+  <div class="card mb-3">
+    <div class="card-body">
+      <form [formGroup]="benefitForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Benefit Name</label>
+            <input
+              
+              formControlName ='name'
+              type="text"
+              class="form-control"
+              id="inputEmail4"
+              placeholder="Enter the name of the category"
+            />
+            
+            <!-- description -->
+          </div>
+          <!-- <div class="form-group col-md-6">
+            <label for="inputEmail4">Description </label>
+            <input
+              formControlName ='description'
+              type="text"
+              class="form-control"
+              id="inputEmail4"
+              placeholder="Enter description"
+            />
+            
+          </div> -->
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Category</label>
+            <select class="form-control" formControlName ='benefitCategoryId'>
+              <option  [value]="benefitCat.id"  *ngFor="let  benefitCat of benfitCategory" >{{benefitCat.name}}</option>
+            </select>
+          </div> 
+          
+        </div>
+        <fieldset >
+         
+          
+          <legend>Limit Types</legend>
+          <div class="row qaz" >
+
+            
+            <div class="col-md-4 mt-2"  *ngFor="let limit of mainLimitS; let i=index">
+              
+                <div class="form-check " *ngIf="limit.limitType !== 'List of services'">
+                  <input formArrayName='limitListViewModel'
+                  [checked]="limit.isSelected"
+                  (change)="onCheckboxChange($event, limit.limitType, benefitForm.value.service)"
+                  class="form-check-input"  
+                  type="checkbox" 
+                  id="flexCheckDefault{{limit.limitType}}">
+                  <label class="form-check-label" for="flexCheckDefault{{limit.limitType}}">
+                    {{limit.limitType}}
+                  </label>
+                </div>
+                <div class="form-check " *ngIf="limit.limitType === 'List of services'">
+                  <input formArrayName='limitListViewModel'
+                  [checked]="limit.isSelected"
+                  (change)="onCheckboxChange($event, limit.limitType, benefitForm.value.service)"
+                  class="form-check-input"  
+                  type="checkbox" 
+                  id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    {{limit.limitType}}
+                  </label>
+                </div>
+              </div>
+              <div class=" col-md-4" >
+                <div>
+                  <small>Service</small>
+                </div>
+                <select class="control" formControlName='serviceId' 
+                >
+                  <option  [disabled]="isServiceListSelected" 
+                     *ngFor="let  service of serviceList"   [value]= "service.id">
+                    {{service.name}}
+                  </option>
+                </select>
+              </div>
+          
+          </div>
+        </fieldset>
+     
+        <br />
+        <div class="button-group">
+          <button type="button"    [disabled]="benefitForm.invalid"
+           (click)="createBenefit()" class="btn btn-outline-primary btn-sm wide" *ngIf="!isEditMode">
+            Add
+          </button>
+          <button type="button" (click)="cancelEdit()" class="btn btn-outline-danger btn-sm" *ngIf="isEditMode">
+            Cancel
+          </button>
+          <button type="button"  (click)="updateBenfit()" class="btn btn-outline-primary btn-sm" *ngIf="isEditMode">
+            Update
+          </button>
+        </div>
+      </form>
+      <hr />
+      <div class="x-datatable compressed mb-2" style="height: 300px">
+        <table class="fixed-header">
+          <thead>
+            <tr>
+              <th><span>Name</span></th>
+              <th><span>Category</span></th>
+              <th><span>Limit Types</span></th>
+              <th><span>Created By</span></th>
+              <th><span>Date Created</span></th>
+              <th><span class="text-center">Action</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of benfit">
+              <td><span>{{data.name}}</span></td>
+              <td><span>{{data.benefitCategoryName}}</span></td>
+              <td style="width: 300px;" >
+                  <span style="display: inline;" *ngFor="let limit of data.limitListViewModel;">
+                    {{limit.limitType}},
+                  </span>
+              </td>
+              <td><span>Innocent Guilty</span></td>
+              <td><span>{{data.dateCreated  | date:'dd/MM/yyyy' }}</span></td>
+              <td>
+                <!-- <span class="text-center"> -->
+                  <div class="nx-dropdown" nx-dropdown>
+                    <a ><i class="bx bx-dots-vertical-rounded"></i></a>
+                    <div class="dropdown-content">
+                      <ul>
+                        <li (click)="editBenfit(data)">
+                          <a class="dropdown-item custom" >
+                            <i class="bx bx-qr"></i> Edit</a>
+                        </li>
+                        <li (click)="openModal(template, data)">
+                          <a class="dropdown-item custom" >
+                            <i class="bx bxs-message-rounded-dots"></i>Delete
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                
+                <!-- </span> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+
+  <div class="modal-body ">
+    <div class="text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+       role="img" width="130" height="130" preserveAspectRatio="xMidYMid meet" 
+       viewBox="0 0 24 24"><path d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z" fill="red"/></svg>
+      <h4>
+        Are You Sure You Want To Delete?
+      </h4>
+      <p><small>This action is irreversible. Click Yes to continue or Cancel to go back </small> </p>
+    </div>
+    <div class="d-flex  justify-content-between">
+      <button (click)="deleteBenfitCategory()"
+      type="button"
+      class="btn btn-outline-primary btn-sm wide"
+     >
+    Yes
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-sm wide"
+   
+      (click)="modalRef.hide()"
+    >
+      Cancel
+    </button>
+    </div>
+   
+  </div>
+  
+</ng-template>
+

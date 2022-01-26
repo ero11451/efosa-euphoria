@@ -1,0 +1,104 @@
+<div class="page medium-page">
+  <header class="page-header">All Plans</header>
+  <div class="card mb-3 card">
+    <div class="card-body">
+      <div class="search-bar">
+        <div class="left-content"> 
+           <button
+          type="button" 
+          (click)="getPlan()"
+          class="btn btn-outline-primary btn-sm wide">
+        Get plan
+        </button>
+        </div>
+        <div class="right-content">
+          <div class="form-group has-search">
+            <i class="bx bx-search-alt-2 form-control-feedback"></i>
+            <input 
+            type="text"
+            (keypress)="search($event)" 
+            class="form-control"  placeholder="Search" />
+          </div>
+        </div>
+      </div>
+      <div class="x-datatable compressed mb-2" style="height: 500px">
+        <table class="fixed-header">
+          <thead>
+            <tr>
+              <th><span>Name</span></th>
+              <th><span>Code</span></th>
+              <th><span>Plan Type</span></th>
+              <th><span>Premium (₦)</span></th>
+              <th><span class="text-center">Action</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of  planData">
+              <td><span>{{data.name}}</span></td>
+              <td><span>{{data.description}}</span></td>
+              <td><span>Base Plan</span></td>
+              <td><span>{{data.premium}}</span></td>
+              <td>
+                <div class="nx-dropdown" nx-dropdown>
+                  <a ><i class="bx bx-dots-vertical-rounded"></i></a>
+                  <div class="dropdown-content">
+                    <ul>
+                      <li>
+                        <a class="dropdown-item custom"
+                         [routerLink]="['/setup/plans/benefits', data.planReferenceNumber]"
+                         routerLinkActive="router-link-active" >
+                          <i class="bx bx-qr"></i> Add benefit </a>
+                      </li> 
+                      <li >
+                        <a class="dropdown-item custom" [routerLink]="['/setup/plans/providers', data.planReferenceNumber]" routerLinkActive="router-link-active" >
+                          <i class="bx bx-qr"></i> Add provider </a>
+                      </li>
+                      <li (click)="openModal(template, data)">
+                        <a class="dropdown-item custom" >
+                          <i class="bx bxs-message-rounded-dots"></i>Delete
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+
+  <div class="modal-body ">
+    <div class="text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+       role="img" width="130" height="130" preserveAspectRatio="xMidYMid meet" 
+       viewBox="0 0 24 24"><path d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z" fill="red"/></svg>
+      <h4>
+        Are You Sure You Want To Delete?
+      </h4>
+      <p><small>This action is irreversible. Click Yes to continue or Cancel to go back </small> </p>
+    </div>
+    <div class="d-flex  justify-content-between">
+      <button (click)="deleteBenfitCategory()"
+      type="button"
+      class="btn btn-outline-primary btn-sm wide"
+     >
+    Yes
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-sm wide"
+   
+      (click)="modalRef.hide()"
+    >
+      Cancel
+    </button>
+    </div>
+   
+  </div>
+</ng-template>
+

@@ -1,0 +1,114 @@
+<div class="page medium-page">
+    <header class="page-header">Provider List View</header>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class=" mb-3">
+          
+          <i class="bx bxs-filter-alt  form-control-feedback"></i>
+          <small>Filter By</small>
+        </div>
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputEmail4">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputEmail4"
+                  placeholder="Enter the name of the category"
+                />
+                
+                <!-- description -->
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputEmail4">Tier</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputEmail4"
+                  placeholder="Enter description"
+                />
+                
+                <!-- description -->
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputEmail4">. </label>
+                <div class="form-group has-search ">
+                  <i class="bx bx-search-alt-2 form-control-feedback"></i>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Search" />
+                </div>
+              </div>
+             
+            </div>
+            <div class="row">
+              <div class="col-md-1 text-small mt-1"> 
+               <i class="bx bxs-filter-alt  form-control-feedback"></i>
+               <small class="ml-1">Sort by</small>  
+            </div>
+             <div class="form-group border-0 col-md-2">
+               <select class="form-control border-0" name="" id="">
+                 <option>Active</option>
+                 <option>Suspended</option>
+                 <option>Inactive</option>
+               </select>
+             </div>
+          
+            </div>
+            </form>
+        <div class="x-datatable compressed mb-2" style="height: 400px">
+          <table class="fixed-header">
+            <thead>
+              <tr>
+                <th>
+                  <span>
+                    <input type="checkbox" />
+                  </span>
+                </th>
+                <!-- <th><span>Code</span></th> -->
+                <th><span>Name</span></th>
+                <th><span>State</span></th>
+                <th><span>Area</span></th>
+                <th><span>Address</span></th>
+                <th><span>Tier</span></th>
+                <th><span class="text-center">Action</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let data of selectedList| filter:searchText
+                "
+              >
+                <td>
+                  <span> <input type="checkbox" 
+                    (change)="onCheckboxChange($event, data)"
+                    /></span>
+                </td>
+                <!-- <td><span>2345675</span></td> -->
+                <td><span>{{data.name}}</span></td>
+                <td><span>{{data.state}}</span></td>
+                <td><span>{{data.area}}</span></td>
+                <td><span>{{data.location}}</span></td>
+                <td><span>{{data.tier.name}}</span></td>
+                <td>
+                  <span class="text-center" (click)="removeAnItem(data)"><i class="bx bx-trash"></i></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <button (click)=" removeMulitpeProviver()" class="btn btn-outline-danger btn-sm">Remove</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="action-area">
+      <button class="btn btn-primary">Proceed</button>
+    </div>
+  </div>
+  
+  

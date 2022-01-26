@@ -1,0 +1,69 @@
+<div class="page medium-page">
+    <header class="page-header">Upgrade/Downgrade</header>
+    <div class="card mb-3">
+      <div class="card-body">
+         
+        <form [formGroup]="planForm">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Entity Name</label>
+              <input
+                formControlName = 'name'
+                type="text"
+                class="form-control"
+                id="inputEmail4"
+                placeholder=""
+              />
+            </div>
+           
+            <div class="form-group col-md-6">
+              <label for="inputPassword4"
+                >Current Tier Level</label
+              >
+              <input
+                formControlName = 'description'
+                type="text"
+                class="form-control"
+                id="inputPassword4"
+                placeholder="Enter Description"
+              />
+              <div class="text-danger"
+              *ngIf=" planForm.get('description').invalid && 
+              (planForm.get('description').dirty ||  
+              planForm.get('description').touched)">
+               Please provide a valid value.
+             </div> 
+            </div>
+            <div class="form-group col-md-6"   >
+              <label for='categoryId'>Upgrade/Downgrade To</label>
+              <select id="categoryId" formControlName = 'basePlanId' class="form-control">
+                <option
+                 for ="categoryId"
+                 name = 'categoryId' 
+                 [value]="data.planModel.id" 
+                 *ngFor="let data of basePlan" selected>
+                  {{data.planModel.name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-12"   >
+                <label for='categoryId'>Reason for upgrading/downgrading entity</label>
+                <textarea id="categoryId" 
+                cols="20" rows="5" formControlName = 'basePlanId' class="form-control">
+                
+                </textarea>
+              </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="action-area">
+      <div class="text-right">
+        <button (click)="moveNext()" [disabled]="planForm.invalid" type="button" class="btn btn-primary">
+         Proceed
+        </button>
+      </div>
+    </div>
+  </div>
+  

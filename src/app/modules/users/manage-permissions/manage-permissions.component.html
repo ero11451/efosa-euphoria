@@ -1,0 +1,78 @@
+<div class="page medium-page">
+  <header class="page-header">
+    Manage permissions for - {{ user?.firstName }} {{ user?.lastName }}
+  </header>
+  <div class="card mb-3">
+    <!--begin::Form-->
+    <form>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="x-datatable compressed">
+              <table>
+                <thead>
+                  <tr>
+                    <th><span>GROUP NAME</span></th>
+                    <th><span>SHORT NAME</span></th>
+                    <th><span>PERMISSION</span></th>
+                    <th><span>STATUS</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let permission of userPermission?.permissions">
+                    <td>
+                      <span>{{ permission.groupName }}</span>
+                    </td>
+                    <td>
+                      <span>{{ permission.shortName }}</span>
+                    </td>
+                    <td>
+                      <span>{{ permission.permission }}</span>
+                    </td>
+                    <td>
+                      <span>
+                        <div class="checkbox">
+                          <input
+                            type="checkbox"
+                            id="Checkbox{{ permission.permission }}"
+                            name="Checkbox{{ permission.permission }}"
+                            [checked]="permission.hasRole"
+                            [(ngModel)]="permission.hasRole"
+                          />
+                          <label
+                            for="Checkbox{{ permission.permission }}"
+                          ></label>
+                        </div>
+                        <div class="checkbox-inline">
+                          <label class="checkbox">
+                            <input
+                              type="checkbox"
+                              name="Checkbox{{ permission.permission }}"
+                              [checked]="permission.hasRole"
+                              [(ngModel)]="permission.hasRole"
+                            />
+                            <span></span>
+                          </label>
+                        </div>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--end::Form-->
+  </div>
+  <div class="action-area">
+    <button
+      type="button"
+      class="btn btn-primary float-right"
+      (click)="savePermissions()"
+    >
+      Save permissions
+    </button>
+  </div>
+</div>

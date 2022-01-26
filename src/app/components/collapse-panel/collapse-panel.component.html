@@ -1,0 +1,16 @@
+<div class="accordion">
+  <div (click)="toggle(collapsed)">
+    <ng-content select="collapse-head"></ng-content>
+  </div>
+
+  <div
+    #collapsed="bs-collapse"
+    class="collapse"
+    [collapse]="isOpen"
+    [isAnimated]="true"
+  >
+    <div>
+      <ng-content select="collapse-body"></ng-content>
+    </div>
+  </div>
+</div>

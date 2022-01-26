@@ -1,0 +1,79 @@
+<div  class="sidebar" [ngClass]="{ active: menuState === 'expanded' }">
+  <div class="logo_content">
+    <div class="logo">
+      <!--       <img src="../assets/images/logo.png" alt="AXA_Mansard" /> &nbsp; &nbsp;
+      &nbsp; -->
+      <div class="logo_name">Euphoria</div>
+    </div>
+    <i
+      class="bx"
+      [ngClass]="{
+        'bx-menu': menuState === 'expanded',
+        'bx-menu-alt-right': menuState === 'collapsed'
+      }"
+      id="btn"
+      (click)="toggleSidebar()"
+    ></i>
+  </div>
+  <ul class="nav_list">
+    <li>
+      <a href="#">
+        <i class="bx bx-grid-alt"></i>
+        <span class="links_name">Operations</span>
+      </a>
+      <span class="tooltip">Operations</span>
+      <ul class="sub-menu">
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Upload Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Update Transactions</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="bx bx-chat"></i>
+        <span class="links_name">Outflows</span>
+      </a>
+      <span class="tooltip">Reports</span>
+      <ul class="sub-menu">
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Upload Outflows</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">View Outflows</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="bx bx-chat"></i>
+        <span class="links_name">Reports</span>
+      </a>
+      <span class="tooltip">Reports</span>
+      <ul class="sub-menu">
+        <li>
+          <a href="#">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">View Transactions</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

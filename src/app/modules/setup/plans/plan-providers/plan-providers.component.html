@@ -1,0 +1,79 @@
+<div class="page medium-page">
+  <header class="page-header">Add providers to plan</header>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="search-bar">
+        <div class="left-content">
+          <button class="btn btn-outline-primary btn-sm" (click)="openProviderSearch()">Add Provider</button>
+          <!-- <div class="vertical-divider">
+            <span>OR</span>
+            <div></div>
+          </div>
+          <button class="btn btn-outline-primary btn-sm">
+            Upload Providers
+          </button> -->
+        </div>
+        <div class="right-content">
+          <div class="form-group has-search">
+            <i class="bx bx-search-alt-2 form-control-feedback"></i>
+            <input type="text" 
+            class="form-control" [(ngModel)]="searchText" placeholder="Search" />
+          </div>
+        </div>
+      </div>
+      <div class="x-datatable compressed mb-2" style="height: 400px">
+        <table class="fixed-header">
+          <thead>
+            <tr>
+              <th>
+                <span>
+                  <input type="checkbox" />
+                </span>
+              </th>
+              <!-- <th><span>Code</span></th> -->
+              <th><span>Name</span></th>
+              <th><span>State</span></th>
+              <th><span>Area</span></th>
+              <!-- <th><span>Address</span></th> -->
+              <th><span>Tier</span></th>
+              <th><span class="text-center">Action</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let data of selectedList | filter:searchText
+              "
+            >
+              <td>
+                <span> <input type="checkbox" 
+                  (change)="onCheckboxChange($event, data)"
+                  /></span>
+              </td>
+              <!-- <td><span>2345675</span></td> -->
+              <td><span>{{data.providerName}}</span></td>
+              <td><span>{{data.providerState}}</span></td>
+              <td><span>{{data.providerAddress}}</span></td>
+              <!-- <td><span>{{data.location}}</span></td> -->
+              <td ><span *ngIf="data.tier">{{data.tier.name}}</span></td>
+              <td>
+                <span class="text-center" (click)="removeAnItem(data)"><i class="bx bx-trash"></i></span>
+              </td>
+            </tr>
+            <div class="text-center" *ngIf="!selectedList">
+              NO PROVIDER ON THIS PLAN
+            </div>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <button (click)="removeMulitpeProviver()" class="btn btn-outline-danger btn-sm">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-area">
+    <button class="btn btn-primary" (click)="moveNext()">Proceed</button>
+  </div>
+</div>
+
